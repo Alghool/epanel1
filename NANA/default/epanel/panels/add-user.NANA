@@ -1,0 +1,129 @@
+<div>
+    <h3 class="panel-title" data-title=""></h3>
+{#todo: insure username is english and email is uniqe#}
+    <form id="{{ edit ? 'edit' : 'add' }}-user-form" class="add-user form-horizontal right" >
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>name</label>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="name" id="name" value="{{ user.name }}" data-parsley-required>
+            </div>
+        </div>
+
+        {% if not edit %}
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>username</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" name="username" id="username" value="{{ user.username }}"
+                           data-parsley-required data-parsley-debounce="600" data-parsley-remote-message="username already exists"
+                           data-parsley-pattern="^[a-zA-Z0-9]+$" data-parsley-remote="{{'users/isUsernameNotExist' | base_url()}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>password</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="password" name="password" id="password" data-parsley-required data-parsley-minlength="6">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>passwordConfirm</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="password" name="password2" id="password2" data-parsley-required data-parsley-equalto="#password">
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>role</label>
+            <div class="col-md-8">
+                <select class="form-control" name="userRole" id="userRole">
+                    {% for role in roles %}
+                        <option value="{{ role.role_id }}" {% if (user.role_id == role.role_id and edit ) or (role.default == '1' and not edit)  %} selected="selected" {% endif %} localize>{{ role.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>gender</label>
+            <div class="col-md-8">
+                <select class="form-control" name="gender" id="gender">
+                    <option value="1" {% if user.gender == 'male' %}selected="selected" {% endif %} localize>male</option>
+                    <option value="2" {% if user.gender == 'female' %}selected="selected" {% endif %} localize>female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>email</label>
+            <div class="col-md-8">
+                <input class="form-control" type="email" name="email" value="{{ user.email }}" id="email"
+                       data-parsley-required data-parsley-debounce="600" data-parsley-remote-message="email already exists"
+                       data-parsley-remote="{{'users/isEmailNotExist?oldemail=' | base_url()}}{{ user.email }}"
+                >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>phone</label>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="phone" value="{{ user.phone }}" id="phone" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>notifiDomains</label>
+            <div class="col-md-8 clearfix">
+                {% for domain in domains %}
+                    <div class="col-md-6">
+                        <div  class="form-control ">
+                            <input type="checkbox"  name="domainsArr[]" value="{{ domain.domain_id }}"
+                            {{ domain.type_id ? 'checked' : '' }}
+                            >&nbsp; <lang>b:{{ domain.name }}</lang> &nbsp;
+                        </div>
+                    </div>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        {#todo:translate this helpername#}
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>image</label>
+            <div class="col-md-8">
+                <div class="uploader">
+                    <input type="file" name="image" id="image" class="file-styled"
+                           data-parsley-filemaxmegabytes="1" data-parsley-trigger="change" data-parsley-filemimetypes="image/jpeg, image/png, image/gif"
+                    >
+                    <span class="help-block" >accepted format png, jpg, gif. max size 1 MB</span>
+                </div>
+            </div>
+            {% if user.pic %}
+                <div class="col-md-3 image-preview clearfix">
+                    <img  src="{{ 'image/'| base_url() }}{{ user.pic }}" alt="">
+                </div>
+            {% endif %}
+        </div>
+
+
+        <div class="text-center">
+            <a  id="submit" class="btn btn-primary accent-3-background-border" hasValidate="1"
+                action="form" link="users/user_epanel/{% if edit %}updateUser?appliedid={{ user.user_id}}{% else %}addUser{% endif %}" form-id="{{ edit ? 'edit' : 'add' }}-user-form" onResult="destroyAndReloadParent">
+                <i class="icon-floppy-disk position-right"></i><lang>save</lang>
+            </a>
+        </div>
+    </form>
+
+</div>
+
+<script>
+
+  $("#{{ edit ? 'edit' : 'add' }}-user-form .file-styled").uniform({
+    fileButtonClass: 'action btn accent-2-background-border',
+    fileButtonHtml: i18next.t('ChoseImage'),
+    fileDefaultHtml: i18next.t('noImage')
+  });
+
+</script>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html {{ lang == 'arabic' ? ' lang="ar" dir="rtl"' : ' lang="en" dir="ltr"' }}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>sign system | login</title>
+    <meta name="MobileOptimized" content="width"/>
+    <meta name="description" content=" NetMechanics epanel"/>
+    <meta property="og:image" content=""/> {#todo:add epanel logo#}
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="author" content="CodeMechanic, Mahmoud Alghool, NetMechanics">
+    <meta name="robots" content="index, notfollow">
+    <meta name="copyright" content="NetMechanics 2019">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ 'src/epanel/'| base_url() }}img/fiv-icon.ico"/>
+    <link rel="stylesheet" type="text/css" href="{{ 'src/epanel/'| base_url() }}css/bootstrap.min.css">
+
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    {#<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">#}
+    <link href="{{ 'src/epanel/'| base_url() }}css/core.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/components.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/colors.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/styleEngine.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/custom.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+</head>
+
+<body class="login-container">
+
+
+<!-- Page container -->
+<div class="page-container">
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <!-- Simple login form -->
+        {{ formOpen }}
+        <div class="panel panel-body login-form">
+            <div class="text-center">
+                <div class="login-logo"><img src="{{ 'src/epanel/img/' | base_url() }}sign-logo.png" alt=""></div>
+                <h5 class="content-group">
+                    <lang>login into your account</lang>
+                    <small class="display-block"><lang>please add your username and password</lang></small>
+                </h5>
+            </div>
+            {% if msg is defined %}
+                <div class="msg">
+                    {{ msg }}
+                </div>
+            {% endif %}
+            <div class="form-group has-feedback has-feedback-right">
+                <input name="username" type="text" class="form-control" placeholder="Username" autofocus required localize-holder>
+                <div class="form-control-feedback">
+                    <i class="icon-user text-muted"></i>
+                </div>
+            </div>
+            <div class="form-group has-feedback has-feedback-right">
+                <input name="password" type="password" class="form-control" placeholder="Password" required localize-holder>
+                <div class="form-control-feedback">
+                    <i class="icon-lock2 text-muted"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"><i class="icon-circle-right2 position-right"></i>
+                    <Lang>login</Lang>
+                </button>
+            </div>
+        </div>
+        {{ formClose }}
+        <!-- /simple login form -->
+    </div>
+    <!-- /main content -->
+</div>
+<!-- /page container -->
+
+<!-- Footer -->
+<div class="footer navbar footer-boxed text-muted">
+    <div class="epanel pull-left">
+        {#<div class="copyright"> &copy; 2019. <span class="mybrand">epanel</span> <span class="version"> {{ version }} </span>  by <a href="http://netmechanics.net" target="_blank">Net Mechanics</a></div>#}
+    </div>
+</div>
+<!-- /footer -->
+
+</body>
+</html>
+<div id="script-holder">
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/pnotify.min.js"></script>
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/app.js"></script>
+    <!-- translate JS files -->
+    <script type="text/javascript" src="https://unpkg.com/i18next@2.5.1/dist/umd/i18next.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/i18next-xhr-backend/i18nextXHRBackend.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/translate.js"></script>
+    <script>
+
+      $(function() {
+        Localization($('html').attr('lang'), ['login', 'msg'], 'login', '{{ "" | base_url() }}' , function(){
+
+          var stack_bar_top = {"dir1": "down", "dir2": "right", "push": "top", "spacing1": 0, "spacing2": 0};
+          const msgs = JSON.parse('{{ msgs }}');
+          msgs.forEach(function(msg, index){
+            const text = getMsg(msg.msg, msg.data);
+            new PNotify({
+              addclass: "stack-bar-top pos"+index,
+              cornerclass: "",
+              width: "auto",
+              type: msg.type,
+              text: text
+            });
+
+          });
+        });
+
+      });
+    </script>
+</div>

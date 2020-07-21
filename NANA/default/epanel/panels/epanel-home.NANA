@@ -1,0 +1,189 @@
+<div>
+  <div class="welcome-holder">
+    <div class="image-circle-holder border-main-color">
+      <img id="my-pic" src="" alt="">
+    </div>
+    <h4 ><lang>welcome</lang>: <span id="my-name"></span></h4>
+    <h5 id="my-username"></h5>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-xlg text-nowrap overflow-hidden">
+      <tbody>
+      <tr>
+        <td class="col-lg-2 col-sm-3 col-xs-6">
+          <div class="media-left media-middle">
+            <a href="#" class="no-decoration btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon legitRipple"><i class="icon-ungroup"></i></a>
+          </div>
+          <div class="media-left">
+            <h5 class="text-semibold no-margin">
+              {{ stat.items }} <small class="display-block no-margin" localize>b:items</small>
+            </h5>
+          </div>
+        </td>
+        <td class="col-lg-2 col-sm-3 col-xs-6">
+          <div class="media-left media-middle">
+            <a href="#" class="no-decoration btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon legitRipple"><i class="icon-make-group"></i></a>
+          </div>
+          <div class="media-left">
+            <h5 class="text-semibold no-margin">
+                {{ stat.components }} <small class="display-block no-margin" localize>b:components</small>
+            </h5>
+          </div>
+        </td>
+        <td class="col-lg-2 col-sm-3 col-xs-6">
+          <div class="media-left media-middle">
+            <a href="#" class="no-decoration btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon legitRipple"><i class="icon-clipboard6"></i></a>
+          </div>
+          <div class="media-left">
+            <h5 class="text-semibold no-margin">
+                {{ stat.tasks }} <small class="display-block no-margin" localize>b:tasks</small>
+            </h5>
+          </div>
+        </td>
+        <td class="col-lg-2 col-sm-3 col-xs-6">
+          <div class="media-left media-middle">
+            <a href="#" class="no-decoration btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon legitRipple"><i class="icon-users4"></i></a>
+          </div>
+          <div class="media-left">
+            <h5 class="text-semibold no-margin">
+                {{ stat.users }} <small class="display-block no-margin" localize>users</small>
+            </h5>
+          </div>
+        </td>
+        <td class="col-lg-2 col-sm-3 col-xs-6">
+          <div class="media-left media-middle">
+            <a href="#" class="no-decoration btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon legitRipple"><i class="icon-user-tie"></i></a>
+          </div>
+          <div class="media-left">
+            <h5 class="text-semibold no-margin">
+                {{ stat.clients }} <small class="display-block no-margin" localize>b:clients</small>
+            </h5>
+          </div>
+        </td>
+        <td class="col-lg-2 col-sm-3 col-xs-6">
+          <div class="media-left media-middle">
+            <a href="#" class="no-decoration btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon legitRipple"><i class="icon-vcard"></i></a>
+          </div>
+          <div class="media-left">
+            <h5 class="text-semibold no-margin">
+                {{ stat.contacts }} <small class="display-block no-margin" localize>b:contacts</small>
+            </h5>
+          </div>
+        </td>
+      </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+
+  <div id="stat">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4">
+
+          <!-- Invitation stats colored -->
+          <div class="panel text-center bg-blue-400 has-bg-image">
+            <div class="panel-body">
+              <h6 class="text-semibold no-margin-bottom mt-5" localize>b:materials</h6>
+              <div class="opacity-75 content-group"><lang>b:totalMaterial</lang>: {{ material.total }} </div>
+            </div>
+
+            <div class="panel-body panel-body-accent pb-15">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:fullMaterial</div>
+                  <h5 class="text-semibold no-margin">{{ material.heigh }}</h5>
+                </div>
+
+                <div class="col-xs-6">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:lowMaterial</div>
+                  <h5 class="text-semibold no-margin">{{ material.low }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /invitation stats colored -->
+
+        </div>
+        <div class="col-md-4">
+
+          <!-- Invitation stats colored -->
+          <div class="panel text-center bg-teal-400 has-bg-image">
+            <div class="panel-body">
+              <h6 class="text-semibold no-margin-bottom mt-5" localize>b:orders</h6>
+              <div class="opacity-75 content-group"><lang>b:totalOrders</lang>: {{ order.total ? order.total : 0 }} </div>
+            </div>
+
+            <div class="panel-body panel-body-accent pb-15">
+              <div class="row">
+                <div class="col-xs-4">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:new</div>
+                  <h5 class="text-semibold no-margin">{{ order.new ? order.new : 0 }}</h5>
+                </div>
+                <div class="col-xs-4">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:inProgress</div>
+                  <h5 class="text-semibold no-margin">{{ order.progress ? order.progress : 0 }}</h5>
+                </div>
+                <div class="col-xs-4">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:archived</div>
+                  <h5 class="text-semibold no-margin">{{ order.archive ? order.archive : 0 }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /invitation stats colored -->
+
+        </div>
+        <div class="col-md-4">
+
+          <!-- Invitation stats colored -->
+          <div class="panel text-center bg-purple-400 has-bg-image">
+            <div class="panel-body">
+              <h6 class="text-semibold no-margin-bottom mt-5" localize>b:workers</h6>
+              <div class="opacity-75 content-group"><lang>b:totalWorkers</lang>: {{ worker.total }} </div>
+            </div>
+
+            <div class="panel-body panel-body-accent pb-15">
+              <div class="row">
+                <div class="col-xs-4">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:idle</div>
+                  <h5 class="text-semibold no-margin">{{ worker.idle ? worker.idle : 0}}</h5>
+                </div>
+                <div class="col-xs-4">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:inWork</div>
+                  <h5 class="text-semibold no-margin">{{ worker.inwork? worker.inwork: 0 }}</h5>
+                </div>
+                <div class="col-xs-4">
+                  <div class="text-uppercase text-size-mini opacity-75" localize>b:notAvailable</div>
+                  <h5 class="text-semibold no-margin">{{ worker.notavailable ? worker.notavailable: 0 }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /invitation stats colored -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  buildHome();
+function buildHome(){
+  epanel = Epanel.getEpanel();
+  setTimeout(()=>{
+    if(!epanel.ready){
+      buildHome();
+    }
+   const user = epanel.user;
+
+    $('#my-pic').prop('src', user.pic);
+    $('#my-name').text(user.name);
+    $('#my-username').text(user.username);
+  },400);
+}
+</script>

@@ -1,0 +1,55 @@
+<div>
+    <h3 class="panel-title" data-title=""></h3>
+    <div class="wrapper">
+        <form id="epanel-setting-form" class="add-account form-horizontal" >
+            <input type="hidden" class="hidden" name="user" id="user" value="">
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>defaultLanguage</label>
+                <div class="col-md-8">
+                    <select class="form-control" name="defaultLanguage" id="defaultLanguage">
+                        <option value="arabic" localize {{ defaultLanguage == 'arabic'? 'selected="selected"' : '' }}>arabic</option>
+                        <option value="english" localize {{ defaultLanguage == 'english'? 'selected="selected"' : '' }}>english</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>maxLoginTry</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="number" name="maxLoginTry" id="maxLoginTry"
+                           placeholder="maxLoginTryInfo" localize-holder value="{{ maxLoginTry }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>breathTimer</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="number" name="breathTimer" id="breathTimer"
+                           placeholder="breathTimerInfo" localize-holder value="{{ breathTimer }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>strictIPaddress</label>
+                <div class="checkbox checkbox-switchery  col-md-2">
+                    <label class="checkbox-inline checkbox-switchery switchery-lg">
+                        <input type="checkbox" id="strictIPaddress" class="switchery switchery-green" name="strictIPaddress" value="1"
+                                {% if strictIPaddress  %} checked {% endif %}>
+                    </label>
+                </div>
+            </div>
+            <div class="text-center">
+                <a  id="submit" class="btn btn-primary accent-3-background-border"
+                    action="form" link="epanel/page/setEpanelSetting" form-id="epanel-setting-form" onresult="reloadme">
+                    <i class="icon-floppy-disk position-right"></i><lang>save</lang>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+  var elems = $('.switchery');
+  elems.each(function(i) {
+    var switchery = new Switchery(this, { color: '#00ad05' });
+  });
+</script>

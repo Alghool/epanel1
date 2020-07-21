@@ -1,0 +1,159 @@
+<div>
+    <h3 class="panel-title" data-title=""></h3>
+
+    <form id="{{ edit ? 'edit' : 'add' }}-role-form" class="add-role form-horizontal" >
+
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>name</label>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="name" id="name" value="{{ role.name }}" data-parsley-required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>type</label>
+            <div class="col-md-8">
+                <select name="myType" id="myType" class="form-control">
+                    <option value="0" selected="selected" disabled="disabled" localize>selectRoleType</option>
+                    {% for type in types %}
+                        <option value="{{ type.id }}"  {{ type.selected ? 'selected' : '' }} localize>{{ type.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+
+
+        <div id="after-type" class="{{role.type == 2 ? '' : 'hidden'}}">
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>اختر الصلاحيات</label>
+                <div class="col-md-8" id="permission-select-holder">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" localize>notifiDomains</label>
+            <div class="col-md-8 clearfix">
+                {% for domain in domains %}
+                    <div class="col-md-6">
+                        <div  class="form-control ">
+                            <input type="checkbox"  name="domainsArr[]"  {{ domain.type_id ? 'checked' : '' }} value="{{ domain.domain_id }}" >&nbsp;<lang>b:{{ domain.name }}</lang>
+                        </div>
+                    </div>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a  id="submit" class="btn btn-primary accent-3-background-border" hasValidate="1"
+                action="form" link="epanel/Role/{% if edit %}editRole?appliedid={{ role.role_id}}{% else %}addRole{% endif %}" form-id="{{ edit ? 'edit' : 'add' }}-role-form" onResult="destroyAndReloadParent">
+                <i class="icon-floppy-disk position-right"></i><lang>save</lang>
+            </a>
+        </div>
+    </form>
+
+</div>
+
+
+<script>
+  //todo: handle multi areas sites
+    const permissions = Epanel.getEpanel().rootArea.permissions;
+
+
+      function checkClicked(elem){
+
+        const myID = $(elem).data('id');
+        const myValue = $(elem).is(':checked');
+        if($(elem).hasClass('root-permission-check')){
+          const myID = $(elem).data('id');
+          const myValue = $(elem).is(':checked');
+          recheckChildern(myID, myValue);
+        }else{
+          const parentID = $(elem).data('parent');
+          recheckChildern(myID, myValue);
+          if(myValue){
+            checkParents(parentID);
+          }else if($(elem).data('display') != 'none'){
+            $('#permission-selector-'+parentID).prop('checked', false);
+            $('[data-parent="'+parentID+'"]').each(function(){
+              if($(this).is(':checked')){
+                $('#permission-selector-'+parentID).prop('checked', true);
+              }
+            })
+          }
+        }
+      }
+
+      function checkParents(_parentID){
+        $('#permission-selector-'+_parentID).prop('checked', true);
+        const parentID = $('#permission-selector-'+ _parentID).data('parent');
+        if(!!parentID){
+          checkParents(parentID);
+        }
+      }
+
+      function recheckChildern(_parentID, _value){
+        $('[data-parent="'+_parentID+'"]').each(function(){
+          $(this).prop('checked', _value);
+          const childID = $(this).data('id');
+          if(!!childID){
+            recheckChildern(childID, _value);
+          }
+        });
+      }
+
+  $(function(){
+
+    {% if rolePermission %}
+        var selectedPermission = {{ rolePermission }};
+    {% else %}
+          var selectedPermission = [];
+    {% endif %}
+      permissions.forEach((rootPermission, index)=>{
+        var isChecked = (selectedPermission.includes(rootPermission.id)) ? " checked " : "";
+        $('#permission-select-holder').append($('<div class="col-md-12">'
+          +'<div  class="form-control sublight-background root-permission-select">'
+          +'<input type="checkbox" class="permission-check root-permission-check" onclick="checkClicked(this)"  data-id="'+rootPermission.id+'" id="permission-selector-'+rootPermission.id+'" name="permissionArr[]" value="'+rootPermission.id+'" '
+          + isChecked +' >&nbsp; '+ rootPermission.title +'&nbsp;'
+          +'</div></div>'));
+        getChilrenPermission(rootPermission);
+      });
+
+      function getChilrenPermission(parent){
+        const lvl = parent.lvl + 1;
+        const widthClass = lvl < 2 ? '12': '6';
+        const colorClass = lvl < 2 ? '': 'light-background';
+        parent.children.forEach((permission, index)=>{
+          var isChecked = (selectedPermission.includes(permission.id)) ? " checked " : "";
+          $('#permission-select-holder').append($('<div class="col-md-'+widthClass+'">'
+            +'<div  class="form-control '+colorClass+' child-permission-select">'
+            +'<input class="child-permission-check " data-display="'+permission.display+'" data-id="'+permission.id+'" onclick="checkClicked(this)" data-parent="'+permission.parent.id+'" type="checkbox" id="permission-selector-'+permission.id+'" name="permissionArr[]" value="'+permission.id+'" '
+            + isChecked + ' >&nbsp; '+ permission.title +'&nbsp;'
+            +'</div></div>'));
+            if(!!permission.children){
+              getChilrenPermission(permission);
+            }
+        })
+      }
+  });
+
+    $('.permission-check').on('click',function(){
+      
+    });
+
+  $('#myType').on('change', function() {
+    const value =this.value;
+    $('#submit').addClass('hidden');
+    //todo: handle multi areas sites
+    if(value == 2){
+      $('#after-type').removeClass('hidden');
+    }else{
+      $('#after-type').addClass('hidden');
+    }
+    $('#submit').removeClass('hidden');
+  });
+</script>

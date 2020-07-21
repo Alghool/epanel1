@@ -1,0 +1,66 @@
+<div>
+    <h3 class="panel-title" data-title=""></h3>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row card">
+                <div class="col-md-4" style="min-height: 200px">
+                    <div class="image-preview">
+                        <img src="{% if pic %}{{ 'image/'| base_url() }}{{ pic }}{% else %}{{ 'src/epanel/img/user-'| base_url() }}{{ gender }}.png{% endif %}" alt="{{ name}}">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="info-widget">
+                        <h4 class="val">{{ username }}</h4>
+                    </div>
+                    <div class="info-widget">
+                        <h4 class="val">{{ name }}</h4>
+                    </div>
+                    <div class="info-widget">
+                        <h4 class="val">{{ role_name }}</h4>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="info">
+                        <div class="info-widget">
+                            <h4 class="name">
+                                <lang>email</lang>:
+                            </h4>
+                            <h4 class="val">{{ email }}</h4>
+                        </div>
+                        <div class="info-widget">
+                            <h4 class="name">
+                                <lang>phone</lang>:
+                            </h4>
+                            <h4 class="val">{{ phone }}</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="extra-actions">
+            <ul>
+                {% if user.editProfile == 'true' %}
+                    <li >
+                        <div class="icon-button" onclick="confirmAction(this)" panel="edit-user" title="edit"
+                             action = "users/User_epanel/updateUser?appliedid={{ user.id }}" reload = "false">
+                            <i class="fa fa-edit fa-2x"></i>
+                            <p>تغير البيانات</p>
+                        </div>
+                    </li>
+                {% endif %}
+                {% if canChangePassword %}
+                    <li>
+                        <div class="icon-button" title="changePassword" panel-id="changePassword"
+                             action="panel" link= "users/user_epanel/changePassword?appliedid={{ user_id }}" localize-title>
+                            <i class="fa fa-user-plus fa-2x"></i>
+                            <p localize>changePassword</p>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+
+    </div>
+</div>

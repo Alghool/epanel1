@@ -1,0 +1,129 @@
+<div>
+    <h3 class="panel-title" data-title=""></h3>
+
+    <br/>
+    <div>
+        <div class="table-responsive">
+            <table class="table table-hover table-framed datatable">
+                <thead>
+                <tr class="top-background-color">
+                    <th localize>name</th>
+                    <th localize>type</th>
+                    <th localize>userCount</th>
+                    {% if policies.switch %}
+                        <th localize>active</th>
+                    {% endif %}
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for role in roles %}
+                    <tr class="element-row" elementid ="{{ role.id }}">
+                        <td localize>{{ role.name }}</td>
+                        <td localize>
+                            {% if role.type == '0' %}
+                                panned
+                            {% elseif role.type == '1' %}
+                                noRole
+                            {% elseif role.type == '2' %}
+                                normalUser
+                            {% elseif role.type == '3' %}
+                                specialUser
+                            {% elseif role.type == '4' %}
+                                localAdmin
+                            {% elseif role.type == '5' %}
+                                multiAdmin
+                            {% elseif role.type == '6' %}
+                                superAdmin
+                            {% elseif role.type == '7' %}
+                                owner
+                            {% elseif role.type == '10' %}
+                                CodeMechanic
+                            {% endif %}
+                        </td>
+                        <td>{{ role.users }}</td>
+                        {% if policies.switch %}
+                            <td>
+                                {% if role.default == '0' %}
+                                    <div class="checkbox checkbox-switchery">
+                                        <label class="checkbox-inline checkbox-switchery switchery-xs">
+                                            <input type="checkbox" class="switchery switchery-green"
+                                                   action ="action" link="epanel/role/switchRole?role={{ role.role_id }}"
+                                                    {% if(role.active)%} checked="checked" {% endif %}>
+                                        </label>
+                                    </div>
+                                {% else %}
+                                    {% if role.active == '0' %}
+                                        <span class="label-light" localize>inactive</span>
+                                    {% elseif role.active == '1' %}
+                                        <span class="label-green" localize>active</span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                        <td>
+                            {% if role.core =='1' %} <span class="label-cyan" localize>core</span>
+                            {% else %}<span class="label-yellow" localize>created</span>{% endif %}
+                            {% if role.default =='1' %} <span class="label-green" localize>default</span>{% endif %}
+                        </td>
+                        <td>
+                            <ul class="icons-list">
+                                {% if policies.edit and role.core == '0' %}
+                                    <li class="text-primary-600">
+                                    <a  panel-id="editRole" title="edit" localize-title
+                                    action="panel" link= "epanel/Role/editRole?appliedid={{ role.role_id }}">
+                                    <i class="icon-pencil7"></i>
+                                    </a>
+                                    </li>
+                                {% endif %}
+                                {% if policies.default and role.default == '0' %}
+                                    <li class="text-green-700">
+                                    <a title="setDefault" localize-title
+                                    action="action" link="epanel/Role/defaultRole?role={{ role.role_id }}" onResult = "reloadme">
+                                    <i class="icon-toggle"></i>
+                                    </a>
+                                    </li>
+                                {% endif %}
+                                {% if policies.delete and role.core == '0' and role.default == '0' %}
+                                    <li class="text-danger-600">
+                                        <a actionConfirm="confirmRoleDelete" title="delete" localize-title
+                                           action="action" link="epanel/Role/deleteRole?role={{ role.role_id }}" onResult="reloadme">
+                                            <i class="icon-trash"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="extra-actions">
+        <ul>
+            {% if policies.add %}
+            <li>
+                <div class="icon-button" title="addRole" panel-id="addRole"
+                     action="panel" link= "epanel/Role/addRole" localize-title>
+                    <i class="fa fa-medkit fa-2x"></i>
+                    <p localize>addRole</p>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<script>
+  var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery-green'));
+  elems.forEach(function(html) {
+    var switchery = new Switchery(html, { color: '#00ad05' });
+  });
+
+  $('.datatable').DataTable();
+</script>

@@ -1,0 +1,124 @@
+<div>
+    <h3 class="panel-title" data-title=""></h3>
+
+    <div>
+        <div class="table-responsive">
+            <table class="table table-hover table-framed datatable">
+                <thead>
+                <tr class="top-background-color">
+                    <th localize>username</th>
+                    <th localize>name</th>
+                    <th localize>role</th>
+                    <th localize>type</th>
+                    <th localize>active</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr class="element-row" elementid ="{{ user.id }}">
+                        <td >
+                            {% if policies.show %}
+                                <a actiontitle="view-user" title="viewUser" panel-id="getUserProfile"
+                                   action ="panel" link="users/User_epanel/getUserProfile?appliedid={{ user.user_id }}" >
+                                    {{ user.username }}
+                                </a>
+                            {% else %}
+                                {{ user.username }}
+                            {% endif %}
+                        </td>
+                        <td>{{ user.name }}</td>
+                        <td localize>{{ user.roleName }}</td>
+                        <td localize>
+                            {% if user.type == '0' %}
+                                panned
+                            {% elseif user.type == '1' %}
+                                noRole
+                            {% elseif user.type == '2' %}
+                                normalUser
+                            {% elseif user.type == '3' %}
+                                specialUser
+                            {% elseif user.type == '4' %}
+                                localAdmin
+                            {% elseif user.type == '5' %}
+                                multiAdmin
+                            {% elseif user.type == '6' %}
+                                superAdmin
+                            {% elseif user.type == '7' %}
+                                owner
+                            {% elseif user.type == '10' %}
+                                CodeMechanic
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if policies.switch %}
+                                <div class="checkbox checkbox-switchery">
+                                    <label class="checkbox-inline checkbox-switchery switchery-xs">
+                                        <input type="checkbox" class="switchery switchery-green"
+                                               action="action" link="users/User_epanel/switchUser?appliedid={{ user.user_id }}"
+                                                {% if(user.active)%} checked="checked" {% endif %}>
+                                    </label>
+                                </div>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <ul class="icons-list">
+                                {% if policies.edit%}
+                                    <li class="text-primary-600">
+                                        <a  panel-id="editUser" title="edit" localize-title
+                                           action="panel" link= "users/User_epanel/updateUser?appliedid={{ user.user_id }}" >
+                                            <i class="icon-pencil7"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if policies.password%}
+                                    <li class="text-brown-700">
+                                        <a  title="changePassword"  panel-id="changePassword"
+                                           action="panel" link= "users/User_epanel/changePassword?appliedid={{ user.user_id }}">
+                                            <i class="icon-lock"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if policies.delete %}
+                                    <li class="text-danger-600">
+                                        <a actionConfirm="confirmUserDelete" title="delete" localize-title
+                                           action="action" link="users/User_epanel/deleteUser?appliedid={{ user.user_id }}" onResult="reloadme">
+                                            <i class="icon-trash"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="extra-actions">
+        <ul>
+            {% if policies.add %}
+                <li>
+                    <div class="icon-button" title="addUser" panel-id="addUser"
+                         action="panel" link= "users/user_epanel/addUser" localize-title>
+                        <i class="fa fa-user-plus fa-2x"></i>
+                        <p localize>addUser</p>
+                    </div>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+
+<script>
+  var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery-green'));
+  elems.forEach(function(html) {
+    var switchery = new Switchery(html, { color: '#00ad05' });
+  });
+
+  $('.datatable').DataTable();
+</script>

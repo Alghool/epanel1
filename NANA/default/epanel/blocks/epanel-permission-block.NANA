@@ -1,0 +1,24 @@
+{#Permission with display value = link#}
+<div id="epanel-permission-link-block">
+    <li class="root-element-js" id="">
+        <a class="action-element-js">
+            <i class="i-element-js " title=""></i>
+            <span class="title-element-js position-right"></span>
+        </a>
+    </li>
+</div>
+
+{#Permission with display value = sub menu#}
+<div id="epanel-permission-subMenu-block">
+    <li class="root-element-js" id="">
+        <a class="action-element-js has-ul">
+            <i class="i-element-js " title=""></i>
+            <span class="title-element-js position-right"></span>
+        </a>
+        <ul class="menu-element-js permissions-holder hidden-ul" >
+        </ul>
+    </li>
+</div>
+
+{#Permission with display value = new menu#}
+{#todo: add this template#}

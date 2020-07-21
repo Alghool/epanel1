@@ -1,0 +1,11 @@
+<div id="epanel-notification-block">
+    <li class="root-element-js" id="" data-date="" >
+        <div class="notification">
+            <a class="no-decoration action-element-js">
+                <p><span localize>by</span>: <span class="user-name-js"></span></p>
+                <p class="info text-element-js"></p>
+                <p class="text-center"><span class="date-js"></span></p>
+            </a>
+        </div>
+    </li>
+</div>

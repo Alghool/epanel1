@@ -1,0 +1,17 @@
+<div id="epanel-panel-block">
+  <div id="" data-id="" class="panel panel-flat root-element-js">
+    <div class="panel-heading">
+      <h5 class="panel-title-js"></h5>
+      <div class="heading-elements">
+        <ul class="panel-toolbar-js icons-list">
+          <li class="collapse"><a data-action="collapse"></a></li>
+          <li class="refresh"><a data-action="reload"></a></li>
+          <li class="close" ><a data-action="close"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel-body-js panel-body">
+      content
+    </div>
+  </div>
+</div>

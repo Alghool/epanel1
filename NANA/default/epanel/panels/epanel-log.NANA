@@ -1,0 +1,36 @@
+<div>
+    <h3 class="panel-title" data-title="{{ myTitle }}"></h3>
+
+    <br/>
+    <div>
+        <div class="table-responsive">
+            <table class="table table-hover table-framed datatable">
+                <thead>
+                <tr class="top-background-color">
+                    <th localize>date</th>
+                    <th localize>user</th>
+                    <th localize>event</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for log in logs %}
+                    <tr class="element-row" elementid ="{{ log.id }}">
+                        <td >{{ parseDate(log.date) }}</td>
+                        <td >{{ log.username }}</td>
+                        <td class="mix-lang">{{ log.text }}</td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+  $('.datatable').DataTable();
+</script>

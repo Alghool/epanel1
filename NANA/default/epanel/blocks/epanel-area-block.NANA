@@ -1,0 +1,27 @@
+{#Area with display value = title#}
+<div id="epanel-area-title-block">
+    <li class="root-element-js" id="">
+            <i class="i-element-js " title=""></i>
+            <span class="title-element-js position-right"></span>
+    </li>
+</div>
+{#Area with display value = link#}
+<div id="epanel-area-link-block">
+    <li class="root-element-js" id="">
+        <a class="action-element-js">
+            <i class="i-element-js " title=""></i>
+            <span class="title-element-js position-right"></span>
+        </a>
+    </li>
+</div>
+
+{#Area with display value = sub menu#}
+{#todo: add this template#}
+
+
+{#Area with display value = new menu#}
+{#todo: add this template#}
+
+
+{#Area with display value = ajax#}
+{#todo: add this template#}

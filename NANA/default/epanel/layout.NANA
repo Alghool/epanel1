@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html {{ lang == 'arabic' ? ' class="arabic rtl" lang="ar" dir="rtl"' : 'class="'~lang~' ltr" lang="en" dir="ltr"' }} >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ 'src/epanel/'| base_url() }}img/fiv-icon.ico"/>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap&subset=arabic" rel="stylesheet">
+    <!-- colors and themes stylesheets -->
+    <link href="{{ 'src/epanel/'| base_url() }}css/themecolor/{{ themeColor? themeColor : 'blue' }}.css"
+          rel="stylesheet" type="text/css" >
+    <!-- Global stylesheets -->
+    <link href="{{ 'src/epanel/'| base_url() }}css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+    <link href="{{ 'src/epanel/'| base_url() }}css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/core.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/components.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/colors.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/styleEngine.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/msgBoxLight.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/fontawesome-all.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ 'src/epanel/'| base_url() }}css/gears.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ 'src/epanel/'| base_url() }}css/themecolor/colorClass.css" rel="stylesheet" type="text/css" >
+    <link href="{{ 'src/epanel/'| base_url() }}css/custom.css" rel="stylesheet" type="text/css">
+    <link href="{{ 'src/epanel/'| base_url() }}css/b.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+
+</head>
+
+<body class="has-bg">
+<!-- Main navbar -->
+<div class="first-navbar navbar navbar-default header-highlight  top-background-color">
+    <div class="navbar-header top-background-color">
+        <a class="navbar-brand" href="#"><img src="{{ 'src/epanel/'| base_url() }}img/{{ siteBrand ? siteBrand : 'epanel_name_white.png' }}" alt="brand"></a>
+        <ul class="nav navbar-nav small-toggle">
+            <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+        <ul class="nav navbar-nav visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav">
+
+        </ul>
+
+        <ul id="toolbar" class="nav navbar-nav navbar-right font-size-19">
+            <li>
+                <a href="{{  'epanel/logout'| base_url() }}">
+                    <i class="glyphicon glyphicon-off" title="logout" localize-title></i>
+                    <span class="visible-xs-inline-block position-right" localize>logout</span>
+                </a>
+            </li>
+            {% if siteLink %}
+            <li>
+                <a href="{{  siteLink }}" target="_blank">
+                    <i class="glyphicon glyphicon-globe" title="website"  localize-title></i>
+                    <span class="visible-xs-inline-block position-right" localize>website</span>
+                </a>
+            </li>
+            {% endif %}
+            <li>
+                <a href="{{  'epanel'| base_url() }}">
+                    <i class="glyphicon glyphicon-refresh" title="refresh"  localize-title></i>
+                    <span class="visible-xs-inline-block position-right" localize>refresh</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<!-- /main navbar -->
+
+<div class="second-navbar navbar navbar-default header-highlight" id="navbar-second">
+    <div class="navbar-header main-background-color hidden-xs">
+        <a class="navbar-brand" href="index.html"></a>
+    </div>
+
+    <ul class="nav navbar-nav no-border visible-xs-block">
+        <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-menu7"></i></a></li>
+    </ul>
+
+    <div class="navbar-collapse collapse" id="navbar-second-toggle">
+        <ul id="area-holder" class="nav navbar-nav rtl">
+        </ul>
+
+    </div>
+</div>
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main main-background-color hidden-print">
+            <div class="sidebar-content ">
+
+                <!-- User menu -->
+                <div class="sidebar-user top-background-color">
+                    <div class="category-content">
+                        <div class="media">
+                            <a href="#" class="media-left"><img id="user-pic" src="" class="img-circle img-sm" alt=""></a>
+                            <div class="media-body">
+                                <span id="user-name" class="media-heading text-semibold"></span>
+                                <div class="text-size-mini text-muted">
+                                    <i class="icon-user-tie text-size-small"></i>
+                                    <span id="user-username"></span>
+                                </div>
+                            </div>
+                            <div class="media-right media-middle profile-setting">
+                                <ul class="icons-list">
+                                    <li>
+                                        <a href="#user-nav" data-toggle="collapse"><i class="icon-cog3"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="navigation-wrapper collapse" id="user-nav">
+                                <ul id="user-options" class="navigation">
+                                    <li class="divider"></li>
+                                    <li><a href="{{  'epanel/logout'| base_url() }}" class="legitRipple"><i class="icon-switch2"></i><lang>logout</lang></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /user menu -->
+
+
+                <!-- Main navigation -->
+                <div class="sidebar-category sidebar-category-visible">
+                    <div id="permission-wrapper" class="category-content no-padding">
+                        <ul  id="permission-holder" class="navigation navigation-main navigation-accordion permissions-holder">
+                        </ul>
+                    </div>
+                </div>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+
+
+        <!-- Main content -->
+        <div class="content-wrapper" >
+
+            <div id="loading-panel" class="loading-panel">
+                <div id="hanging-container" class="">
+                    <div id="gear-container">
+                        <div class="gear two">
+                            <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                        <div class="gear three medium">
+                            <div class="gear-inner">
+                                <div class="baz"></div>
+                                <div class="baz"></div>
+                                <div class="baz"></div>
+                                <div class="baz"></div>
+                                <div class="baz"></div>
+                            </div>
+                        </div>
+                        <div class="gear four large">
+                            <div class="gear-inner">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4>
+                            <span id="page-title" class="text-semibold"></span>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <!-- /page header -->
+
+
+            <!-- Content area -->
+            <div id="panels-holder" class="content">
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">تأكيد</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">موافق</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------------------------------------------------------------->
+
+<!-- Footer -->
+{#<div class="footer text-muted">#}
+    {#<div class="col-xs-6 pull-right">#}
+        {#<div id="server-clock" class="time"> {{ time }} </div>#}
+    {#</div>#}
+    {#<div class="pull-left col-xs-6">#}
+        {#<div class="copyright" > &copy; 2017. <span class="mybrand">epanel</span> by <a href="http://netmechanics.net" target="_blank">Net Mechanics</a></div>#}
+    {#</div>#}
+
+{#</div>#}
+<!-- /footer -->
+<div id="epanel-templates" class="hidden">
+        {% include 'epanel/blocks/epanel-toolbar-block.NANA' %}
+        {% include 'epanel/blocks/epanel-useroption-block.NANA' %}
+        {% include 'epanel/blocks/epanel-area-block.NANA' %}
+        {% include 'epanel/blocks/epanel-permission-block.NANA' %}
+        {% include 'epanel/blocks/epanel-notificationholder-block.NANA' %}
+        {% include 'epanel/blocks/epanel-notification-block.NANA' %}
+        {% include 'epanel/blocks/epanel-panel-block.NANA' %}
+</div>
+<!-- Theme JS files -->
+<div id="script-holder">
+    {#todo: recheck those#}
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/nicescroll.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/drilldown.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/app.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/parsley.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/parsley.validators.js"></script>
+    {% if lang == 'arabic' %}
+        <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/parsley_ar.js"></script>
+    {% endif %}
+    {#<script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/uniform.min.js"></script>#}
+    {#<script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/form_inputs.js"></script>#}
+    {#<script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/validate.min.js"></script>#}
+    {#<script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/additional_methods.min.js"></script>#}
+    {#<script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/messages_ar.min.js"></script>#}
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/buttons.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/session_timeout.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/ripple.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/jquery.msgBox.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/select2.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/uniform.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/switchery.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/spectrum.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/touchspin.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/summernote.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/picker.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/picker.date.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/picker.time.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/stepy.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/moment.js"></script>
+    {#<script type="text/javascript" id="uniform" src="{{ 'src/epanel/'| base_url() }}js/translations/ar.js"></script>#}
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/pnotify.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/dropzone.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/fancybox.min.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}plugins/tinymce/tinymce.min.js"></script>
+    <!-- translate JS files -->
+    <script type="text/javascript" src="https://unpkg.com/i18next@2.5.1/dist/umd/i18next.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/i18next-xhr-backend/i18nextXHRBackend.js"></script>
+    <!-- epanel core JS files -->
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/user.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/epanel.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/page.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/area.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/permission.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/connector.js"></script>
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/panel.js"></script>
+
+
+    <script type="text/javascript" src="{{ 'src/epanel/'| base_url() }}js/core/functions.js"></script>
+    <script>
+        $(function () {
+          epanel = new Epanel('{{ epanelLink }}', '{{ epanelData }}', (epanel)=>{
+            $('#notification-holder').prepend('<li id="nonotifi" class="text-center">'+i18next.t('notifi:noNotifi')+'</li>');
+            {% if notifications %}
+            const notifications = {{ notifications }};
+            if(notifications.length > 0){
+              $('#notification-holder #nonotifi').remove();
+              notifications.reverse().forEach((_item, _index)=>{
+                epanel.drawNotification(_item);
+              })
+              //todo: add see more
+            }
+            {% endif %}
+            console.log(epanel);
+
+          });
+        });
+    </script>
+</div>
+<!-- /theme JS files -->
+</body>
+</html>

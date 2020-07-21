@@ -1,0 +1,42 @@
+<div>
+    <h3 class="panel-title" data-title=""></h3>
+    <div class="wrapper">
+        <form id="user-setting-form" class="add-account form-horizontal" >
+            <input type="hidden" name="id" value="{{ userID }}">
+            <input type="hidden" class="hidden" name="user" id="user" value="">
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>language</label>
+                <div class="col-md-8">
+                    <select class="form-control" name="language" id="language">
+                        <option value="arabic" localize {{   language == 'arabic'? 'selected="selected"' : '' }}>arabic</option>
+                        <option value="english" localize {{ language == 'english'? 'selected="selected"' : '' }}>english</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>notificationCount</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="number" name="notificationCount" id="notificationCount"
+                           placeholder="numberOfMinNotification" localize-holder value="{{ notificationCount }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2" localize>color</label>
+                <div class="col-md-8">
+                    <select class="form-control" name="themeColor" id="themeColor">
+                        <option value="blue" localize {{ themeColor == 'blue'? 'selected="selected"' : '' }}>blue</option>
+                        <option value="orange" localize {{ themeColor == 'orange'? 'selected="selected"' : '' }}>orange</option>
+                        <option value="green" localize {{ themeColor == 'green'? 'selected="selected"' : '' }}>green</option>
+                    </select>
+                </div>
+            </div>
+            <div class="text-center">
+                <a  id="submit" class="btn btn-primary accent-3-background-border"
+                    action="form" link="users/user_epanel/setUserSetting" form-id="user-setting-form" onresult="reloadme">
+                    <i class="icon-floppy-disk position-right"></i><lang>save</lang>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

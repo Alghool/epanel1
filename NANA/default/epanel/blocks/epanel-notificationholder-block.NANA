@@ -1,0 +1,14 @@
+<div id="epanel-notificationholder-block">
+    <li class="root-element-js" id="">
+        <span id="notification-counter" class="label-red hidden" ></span>
+        <a class="action-element-js dropdown-toggle legitRipple" data-toggle="dropdown" aria-expanded="true">
+            <i class="i-element-js glyphicon " title=""></i>
+            <span class="title-element-js visible-xs-inline-block position-right"></span>
+        </a>
+        <ul id="notification-holder" class="dropdown-menu dropdown-menu-{{ lang == 'arabic'? 'left' : 'right' }}">
+            <li id="notification-divider" class="divider">
+
+            </li>
+        </ul>
+    </li>
+</div>

@@ -1,0 +1,1 @@
+<?php//custom site configurationsdefined('BASEPATH') OR exit('No direct script access allowed');
