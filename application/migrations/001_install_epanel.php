@@ -12,6 +12,7 @@ class Migration_install_epanel extends MY_Migration {
             'pic' => $this->varChar(),
             'username' => $this->varChar(),
             'password' => $this->varChar(),
+            'phone' => $this->varChar(),
             'gender' => $this->enum(['male','female']),
             'active' => $this->tinyInt(),
             'epanel' => $this->foreignKey(),
