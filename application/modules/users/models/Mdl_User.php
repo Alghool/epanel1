@@ -12,9 +12,9 @@ class Mdl_User extends MY_Model
 
     public function getByIDWithRole($userID){
         $this->db->select('epanel_roles.*,epanel_roles.name AS role_name,
-            users.id,users.name,users.email,users.pic,users.phone,users.gender,users.username,users.epanel');
-        $this->db->where( $this->keyAttr, $userID);
-        $this->db->join('epanel_roles', 'role_id = epanel', 'left');
+            users.id as user_id,users.name,users.email,users.pic,users.phone,users.gender,users.username,users.epanel');
+        $this->db->where( $this->table.'.'.$this->keyAttr, $userID);
+        $this->db->join('epanel_roles', 'epanel_roles.id = epanel', 'left');
         $query = $this->db->get($this->table);
         return $query->row_array();
     }

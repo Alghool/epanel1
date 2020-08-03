@@ -1,0 +1,263 @@
+/***glyphicon resize tool*****************************/
+.gi-2x{font-size: 2em;}
+.gi-3x{font-size: 3em;}
+.gi-4x{font-size: 4em;}
+.gi-5x{font-size: 5em;}
+
+/***font sizing tool***********************************/
+.font-size-19{
+    font-size: 19px !important;
+}
+
+.large-text{
+    font-size: 18px !important;
+    display: inline-block;
+}
+/***fa*****************************************/
+.fa.padding{
+    padding: 0 10px;
+}
+
+.fa.width,
+span.width{
+    width:50px
+}
+/*** padding and margin ******************************/
+
+.padding-5{
+    padding: 5px;
+}
+
+.padding-10{
+    padding: 10px;
+}
+
+/*** action menu *************************************/
+ul.action-menu {
+    list-style: none;
+    -webkit-padding-start: 0px !important;
+}
+
+.action-menu li {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+/*** anchor ******************************************/
+a.no-decoration{
+    color: inherit!important;
+    text-decoration: inherit!important;
+}
+a:hover.no-decoration{
+    color: inherit!important;
+    text-decoration: inherit!important;
+}
+
+
+/*** labels ******************************************/
+.label-red {
+    color: white;
+    background: red;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+}
+
+.label-yellow {
+    background: yellow;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+}
+
+.label-green {
+    background: #60ff66;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+}
+
+.label-blue {
+    background: blue;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+    color: white;
+}
+
+.label-royal {
+    background: royalblue;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+}
+
+.label-light {
+    background: #E0F7FA;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+}
+
+.label-cyan {
+    background: cyan;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+}
+
+.label-white {
+    background: #ffffff;
+    padding: 1px 10px 5px 10px;
+    border-radius: 8px;
+    color: black;
+}
+
+/*** has tools ******************************************/
+
+.ltr .my-tool{
+    position: absolute;
+    right: 5px;
+    top: 5px
+}
+
+.rtl .my-tool{
+    position: absolute;
+    left: 5px;
+    top: 5px
+}
+
+.has-hidden-tools, .has-tools{
+    position: relative;
+}
+
+.has-hidden-tools .my-tool {
+    display: none;
+}
+
+.my-tool i {
+    width: 30px;
+}
+
+.my-tool .icon-trash {
+    color: red;
+}
+
+.my-tool .icon-pencil {
+    color: blue;
+}
+
+.has-hidden-tools:hover .my-tool{
+    display: block;
+}
+
+.my-tool i{
+    cursor: pointer;
+}
+
+
+/*** colors ******************************************/
+.color-red{
+    color: red;
+}
+
+.color-green{
+    color: green;
+}
+
+.color-blue{
+    color: royalblue;
+}
+
+/*** my switch ***************************************/
+.my-switch{
+    display: inline-block;
+    background-color: #dddddd;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.my-switch span{
+    color: #dddddd;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block;
+     -moz-transition: all 0.6s ease-in-out;
+     -webkit-transition: all 0.6s ease-in-out;
+     -o-transition: all 0.6s ease-in-out;
+     -ms-transition: all 0.6s ease-in-out;
+}
+
+.my-switch.on .switch-on{
+    background-color: #00ad05;
+    color: white;
+    border: 1px solid rgba(146, 144, 144, 0.36);
+}
+.my-switch.on .switch-off{
+
+}
+
+.my-switch.off .switch-on{
+
+}
+.my-switch.off .switch-off{
+    background-color: red;
+    color: white;
+    border: 1px solid rgba(146, 144, 144, 0.36);
+}
+
+
+/***center content************************************/
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.vertical-center-nonfull-height {
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+/***helpers*****************************************************************************************/
+.clear{
+    clear: both !important;
+}
+
+.inline-block{
+    display: inline-block;
+}
+
+.full-width{
+    width: 100%;
+}
+
+/***to get inline ul item order from right to left****/
+@media (min-width: 768px) {
+    html:not(.english) ul.rtl > li {
+        float: right;
+    }
+}

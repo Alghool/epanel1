@@ -1,0 +1,20 @@
+/*
+*   a set of color range for selected theme
+*   blue color
+*
+*
+*
+*/
+
+:root {
+    --color-dark:       black;
+    --color-subdark:    #777;
+    --color-top:        #558B2F;
+    --color-main:       #689F38;
+    --color-supmain:    #9CCC65;
+    --color-accent-1:   #4169e1; /*royalblue*/
+    --color-accent-2:   #AED581;
+    --color-accent-3:   #009688;
+    --color-light:      #DFDFDF;
+    --color-suplight:   #e7e2bf;
+}

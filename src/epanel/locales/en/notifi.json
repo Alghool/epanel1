@@ -1,0 +1,22 @@
+{
+  "changePassword": "changed your password",
+  "orderNeedApprove": "Manufacturing order number {{orderID}} need approval from storage",
+  "orderApproved": "Manufacturing order number {{orderID}} approved from storage",
+  "taskRemoved": "task {{task}} was removed from your work load",
+  "taskAdded": "task {{task}} was added to your work load",
+  "taskRated": "task {{task}} was rated {{rate}}",
+  "taskNeedRate": "worker {{worker}} completed task of {{task}} and need to be rated",
+  "lowStorage": "material {{material}} quantity is very low",
+  "orderReceived": "Manufacturing order {{orderID}} is received and now in workshop",
+  "timerStop": "worker {{worker}} stop task {{task}} timer",
+  "taskONHold": "worker {{worker}} set task {{task}} on hold",
+  "taskCompleted": "worker {{worker}} complete task {{task}}",
+  "componentCompleted": "component {{component}} in Manufacturing order number {{order}} completed and waiting for rate ",
+  "nowCOrderCreated": "now construction order number {{cOrderID}} created automatically from order number {{orderID}} ",
+  "taskLowRate": "task {{task}} has been rated low {{rate}} by {{user}}",
+  "newPorder": "you have new purchase order #{{order}} awaiting for complete",
+  "newPurchases": "you have been assigned to get {{material}} ",
+  "newDelivery": "material {{material}} has been delivered to storage, from purchasing order # {{order}}",
+
+  "noNotifi": "no notifications now"
+}

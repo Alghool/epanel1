@@ -1,0 +1,415 @@
+/*** order panel *************************************************************************************************************8*/
+#order-page .order-cart{
+    margin: 20px 0;
+}
+#order-page h3{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#order-page .order-details{
+    width: 24%;
+    display: inline-block;
+    text-align: center;
+}
+#order-page .item-details{
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+}
+#order-page .item-details p,
+#order-page .order-details p
+{
+    margin: 0 0 5px ;
+    display: block;
+}
+
+#order-page .comment-text {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.mix-lang{
+    direction: ltr;
+}
+
+/*** add order **********************************************************************************************************/
+#selected-item-menu {
+    list-style: none;
+}
+
+.selected-item {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+#selected-item-menu .remove-item{
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+ul#items-menu {
+    margin: 20px;
+    list-style: none;
+}
+#items-menu .items-item {
+    margin: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/*** worker home page ***************************************************************************************************/
+
+ul.tasks-ul {
+    list-style: none;
+}
+
+.tasks-ul li {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    position: relative;
+}
+
+.task-cart .task-info span {
+    padding: 10px;
+    display: inline-block;
+}
+
+.progress.progress-rounded {
+    margin: 10px;
+}
+
+.task-cart .task-tools {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.task-cart .task-tools .start-btn{
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.start-btn i{
+    width: 30px;
+}
+
+#current-task {
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #0c28dd;
+    border-radius: 10px;
+    position: relative;
+}
+
+#current-task .btn{
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.btn i{
+    width: 30px;
+}
+
+.btn.blue{
+     color: blue !important;
+     border-color: blue !important;
+ }
+
+.btn.green{
+    color: green !important;
+    border-color: green !important;
+}
+
+.btn.red{
+    color: red !important;
+    border-color: red !important;
+}
+
+.btn.orange{
+    color: orange !important;
+    border-color: orange !important;
+}
+
+.task-timer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: large;
+}
+
+.widget{
+    margin: 30px 0;
+    clear: both;
+}
+
+.collapse-holder {
+    /*margin: 10px;*/
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.collapse-holder>a {
+    width: 100%;
+    display: block;
+    position: relative;
+    padding: 5px;
+}
+
+
+ul.widget-list {
+    list-style: none;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+ul.widget-list li {
+    margin-top: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+ul.widget-list li {
+    margin-top: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+ul.widget-list li:hover{
+    background-color: rgba(135, 135, 135, 0.1);
+}
+
+
+li.add {
+    color: #888;
+    font-weight: bold;
+}
+
+#operation-selected li,
+#material-selected li,
+#item-selected li,
+#element-selected li
+{
+    padding: 5px;
+}
+
+.collapse-header{
+    height: 40px;
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+ul.inline.tool-list {
+    margin: 0px 30px;
+}
+
+.sub-panel{
+    width: 100%;
+    margin: 25px 0px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+.logo-wrapper{
+    min-width: 200px;
+}
+
+.client-info {
+    font-size: 16px;
+    margin: 2px 0px;
+}
+
+.logo-small{
+    min-width: 125px;
+    max-width: 125px;
+    min-height: 125px;
+    max-height: 125px;
+}
+
+.border-sm{
+    border: 1px solid #000;
+}
+
+.attachment-panel, .notes-panel, .item-panel{
+    padding: 10px 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+.background-white{
+    background-color: white;
+}
+
+.btn-attachment-file {
+    border: 1px solid #000;
+    margin: 5px 0px;
+    border-radius: 10px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.degree-selector span{
+    cursor: pointer;
+}
+
+.degree-selector span.selected {
+    cursor: inherit;
+    border: 3px solid #0029ff;
+}
+
+.item-title {
+    margin: -10px -10px -10px;
+    padding: 5px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.item-inputs{
+    margin-top: 20px;
+    display: flex;
+    min-height: 125px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.rtl .price-holder{
+    position: absolute;
+    top: 15px;
+    left: 50px;
+}
+
+.ltr .price-holder{
+    position: absolute;
+    top: 15px;
+    right: 50px;
+}
+
+.ltr .checkbox-switchery .switchery{
+    left: 0 !important;
+}
+
+
+
+.rtl .element-title{
+    font-size: 20px;
+    margin-right: 50px;
+}
+
+.ltr .element-title{
+    font-size: 20px;
+    margin-left: 50px;
+}
+
+
+.client-data{
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.login-logo {
+    max-width: 80%;
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.login-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.print-btn {
+    position: absolute;
+    top: 15px;
+    left: 60px;
+    border: 1px solid #ddd;
+}
+
+/*** tasks list **********************************************************************************/
+#main-task-cart{
+    border: solid 1px #ddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.order-percent{
+    position: absolute;
+    top: 10px;
+    left: 25px;
+}
+
+.task-row{
+    padding: 20px 10px;
+    cursor: pointer;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.task-row:hover{
+    background-color: #f5f5f5;
+}
+
+span.rate, .rate.info{
+    color:gold;
+}
+
+.worker-stat {
+    display: flex;
+    height: 250px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.worker-stat .rate{
+    color: gold;
+    text-align: center;
+}
+.worker-stat .table-responsive{
+    overflow-x: auto;
+    max-height: 250px;
+    overflow-y: hidden;
+}
+
+.info-inline {
+    display: inline-block;
+     margin: 10px;
+}
+
+.info-inline p{
+    display: inline;
+}
+
+/*** show page ************************************************************************************/
+
+.info-wrapper{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.info-wrapper>div{
+    text-align: center;
+}
+
+.negative-mt-10{
+    margin-top: -10px !important;
+}

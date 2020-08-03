@@ -41,7 +41,7 @@ class Epanel_Core extends MX_Controller{
         }
         elseif($roleID != 0 &&(in_array($roleType, [4, 5]))){
             //check if he is an admin so get all his areas permissions
-            $permissions = $this->Mdl_Permission->getAreaPermissions(array_map(function($area){return $area['area_id'];},$areas));
+            $permissions = $this->Mdl_Permission->getAreaPermissions(array_map(function($area){return $area['id'];},$areas));
         }else{
             $permissions = $this->Mdl_Permission->getRolePermissions($roleID);
         }
@@ -88,7 +88,7 @@ class Epanel_Core extends MX_Controller{
                     $user['epanel'] = false;
                     break;
                 default:
-                    $user['epanel'] = $this->getEpanelAreasAndPermissions($user['role_id'], $user['type']);
+                    $user['epanel'] = $this->getEpanelAreasAndPermissions($user['id'], $user['type']);
                     $user['epanel']['policies'] = $this->Mdl_Policy->getPoliciesStructure($user['type'],$user['user_id']);
                     break;
             }
@@ -158,7 +158,7 @@ class Epanel_Core extends MX_Controller{
             $userPermissions = $this->sessionengine->getEpanel('permissions');
             foreach ($userPermissions as $thisPermission){
                 if($thisPermission['display'] == 'none' && $thisPermission['parent'] == $permission){
-                    $actionPermissions[$thisPermission['name']] = $thisPermission['permission_id'];
+                    $actionPermissions[$thisPermission['name']] = $thisPermission['id'];
                 }
             }
             $this->nanaengine->addToData([
@@ -171,7 +171,7 @@ class Epanel_Core extends MX_Controller{
                 $userPermissions = $this->sessionengine->getEpanel('permissions');
                 foreach ($userPermissions as $thisPermission){
                     if($thisPermission['display'] == 'none' && $thisPermission['parent'] == 0){
-                        $actionPermissions[$thisPermission['name']] = $thisPermission['permission_id'];
+                        $actionPermissions[$thisPermission['name']] = $thisPermission['id'];
                     }
                 }
                 $this->nanaengine->addToData([
@@ -195,7 +195,7 @@ class Epanel_Core extends MX_Controller{
             'username'  => $userData['username'],
             'pic' => $userData['pic'],
             'lang' => (isset($userData['setting']['language']))? $userData['setting']['language']:$this->Mdl_Setting->getSettingStrValue('defaultLanguage') ,
-            'role' => $userData['role_id'],
+            'role' => $userData['id'],
             'roleType' => $userData['type']
         );
         $sessionData =[
@@ -241,13 +241,13 @@ class Epanel_Core extends MX_Controller{
         if($type == 'area'){
             $userAreas = $this->sessionengine->getEpanel('areas');
             foreach($userAreas as $area){
-                if($area['area_id'] == $area) return true;
+                if($area['id'] == $area) return true;
             }
         }
         if($type == 'permission'){
             $userPermissions = $this->sessionengine->getEpanel('permissions');
             foreach($userPermissions as $thisPermission){
-                if($thisPermission['permission_id'] == $permission){
+                if($thisPermission['id'] == $permission){
                     $this->load->model('Mdl_Permission');
                     return $this->Mdl_Permission->IsPermissionInArea($permission, $area);
                 }
@@ -371,42 +371,7 @@ class Epanel_Core extends MX_Controller{
     }
 
     protected function getUserAuthorization($userID){
-        Epanel_Core::$key = true;
-        $this->load->module('clients')->load->model('Mdl_ClientUser');
-
-        $clientAccount = $this->Mdl_ClientUser->isClient($userID);
-        if($clientAccount){
-            if(!is_numeric($clientAccount['permissions'])){
-                $clientAccount['permissions'] = json_decode($clientAccount['permissions'], true);
-            }elseif($clientAccount['is_main']){
-                $clientAccount['permissions'] = ['mainAccount'=> 1];
-            }else{
-                $clientAccount['permissions'] = ['none'=> 0];
-            }
-            $clientAccount['accountType'] = 'client';
-            return $clientAccount;
-        }
-
-        $this->load->module('construction')->load->model('Mdl_Cworker');
-
-        $workerAccount = $this->Mdl_Cworker->isWorker($userID);
-        if ($workerAccount){
-            $workerAccount['accountType'] = 'cWorker';
-            $workerAccount['worker'] = $workerAccount['id'];
-            return $workerAccount;
-        }
-
-        $this->load->module('workers')->load->model('Mdl_Worker');
-        $mWorker = $this->Mdl_Worker->isUserWarker($userID);
-
-        if ($mWorker){
-            $mWorker = [
-                    'id' => $mWorker,
-                    'accountType' => 'mWorker'
-                ] ;
-            return $mWorker;
-        }
-
+        //todo: rebuild this to handle site accounts
         return ['accountType' => 'none'];
     }
 }

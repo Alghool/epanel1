@@ -184,7 +184,7 @@ class Role extends Epanel_Core {
 
             $data['role'] = $role;
             $roleEpanel = $this->getEpanelAreasAndPermissions($roleID, $role['type']);
-            $rolePermission = array_column($roleEpanel['permissions'], 'permission_id');
+            $rolePermission = array_column($roleEpanel['permissions'], 'id');
             $data['rolePermission'] = json_encode($rolePermission);
 
             $data['domains'] = $this->notificationengine->getActiveDomainsWithRole($roleID);

@@ -1,0 +1,22 @@
+{
+  "changePassword": "قام بتغير كلمة السر الخاصة بك",
+  "orderNeedApprove": "أمر تشغيل برقم {{orderID}} يحتاج الى المراجعة والاعتماد من المخازن",
+  "orderApproved": "أمر تشغيل برقم {{orderID}} تمت مراجعته واعتماده من المخازن",
+  "taskRemoved": "العملية {{task}} تمت ازالتها من قائمة مهامك",
+  "taskAdded": "العملية {{task}} تمت اضافتها الى قائمة مهامك",
+  "taskNeedRate": "العامل {{worker}} انهى العملية  {{task}} ويمكن الان تقيمها",
+  "lowStorage": "المخزون من {{material}} قليل جدا فى المخزن",
+  "taskRated": "العملية {{task}} تم تقيمها {{rate}}",
+  "orderReceived": "امر التشغيل رقم {{orderID}} تم استلامة والان فى الورشة",
+  "timerStop": "العامل {{worker}} اوقف عداد العملية {{task}}",
+  "taskONHold": "العامل {{worker}} قام بإقاف العملية  {{task}} مؤقتا",
+  "taskCompleted": "العامل {{worker}} قام بإنهاء العملية  {{task}} ",
+  "componentCompleted": "المكون {{component}} فى امر التشغيل رقم {{order}} تم الانتهاء من تنفيذه وينتظر التقيم ",
+  "nowCOrderCreated": "امر تركيب جديد برقم {{cOrderID}} تم انشائه بشكل تلقائي من امر التصنيع رقم {{orderID}} ",
+  "taskLowRate": "العملية {{task}} تم تقيمها{{rate}} تقيم منخفض  من قبل {{user}}",
+  "newPorder": "لديك امر شراء جديد برقم{{order}} ينتظر التنفيذ",
+  "newPurchases": "تم تكليفك بشراء الخامة {{material}} ",
+  "newDelivery": "تم توصيل الخامة {{material}} الى المخزن, من امر شراء رقم {{order}}",
+
+  "noNotifi": "لا توجد تنبيهات حالياً"
+}

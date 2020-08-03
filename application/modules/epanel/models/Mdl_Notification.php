@@ -21,8 +21,8 @@ class Mdl_Notification extends MY_Model
     function getLastNotification($userID, $roleID, $roleType, $since, $limit){
         $this->db->select('notifications.*,users.name as userName');
         $this->db->join('users', 'users.id = notifications.user_id', 'left');
-        $this->db->join('notifi_domains', 'notifi_domains.domain_id = notifications.domain', 'left');
-        $this->db->join('notifi_register', 'notifi_register.domain = notifi_domains.domain_id', 'left');
+        $this->db->join('notifi_domains', 'notifi_domains.id = notifications.domain', 'left');
+        $this->db->join('notifi_register', 'notifi_register.domain = notifi_domains.id', 'left');
 
         $this->db->group_start();
         $this->db->or_group_start()->where('type', 'user')->where('type_id', $userID)->group_end();
@@ -33,7 +33,7 @@ class Mdl_Notification extends MY_Model
 
         $this->db->where('date >', $since);
         $this->db->order_by('date', 'DESC');
-        $this->db->group_by('notifications.notification_id');
+        $this->db->group_by($this->table.'.'.$this->keyAttr);
         $this->db->limit($limit);
 
         $query = $this->db->get($this->table);
@@ -73,7 +73,7 @@ class Mdl_Notification extends MY_Model
 
     function getActiveDomainsWithUser($userID){
         $this->db->select('notifi_domains.*, notifi_register.*');
-        $this->db->join('notifi_register', "notifi_register.domain = notifi_domains.domain_id and type = 'user' and type_id = '{$userID}'" , 'left');
+        $this->db->join('notifi_register', "notifi_register.domain = notifi_domains.id and type = 'user' and type_id = '{$userID}'" , 'left');
         $this->db->where('active', 1);
         $query = $this->db->get('notifi_domains');
         return $query->result_array();
@@ -81,7 +81,7 @@ class Mdl_Notification extends MY_Model
 
     function getActiveDomainsWithRole($roleID){
         $this->db->select('notifi_domains.*, notifi_register.*');
-        $this->db->join('notifi_register', "notifi_register.domain = notifi_domains.domain_id and type = 'role' and type_id = '{$roleID}'" , 'left');
+        $this->db->join('notifi_register', "notifi_register.domain = notifi_domains.id and type = 'role' and type_id = '{$roleID}'" , 'left');
         $this->db->where('active', 1);
         $query = $this->db->get('notifi_domains');
         return $query->result_array();

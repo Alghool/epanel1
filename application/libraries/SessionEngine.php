@@ -174,7 +174,7 @@ class SessionEngine
             $permissions = $epanelData['permissions'];
             $epanelData['permissions'] = [];
             foreach ($permissions as $permission){
-                $epanelData['permissions'][$permission['permission_id']] = $permission;
+                $epanelData['permissions'][$permission['id']] = $permission;
             }
             unset($permissions);
         }
@@ -182,7 +182,7 @@ class SessionEngine
             $areas = $epanelData['areas'];
             $epanelData['areas'] = [];
             foreach ($areas as $area){
-                $epanelData['areas'][$area['area_id']] = $area;
+                $epanelData['areas'][$area['id']] = $area;
             }
         }
         $this->CI->session->set_userdata('epanel', $epanelData);
