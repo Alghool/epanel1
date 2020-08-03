@@ -6,7 +6,7 @@ class Mdl_User_Setting extends MY_Model
     function __construct()
     {
         $this->table = 'user_setting';
-        $this->keyAttr = 'setting_id';
+        $this->keyAttr = 'id';
     }
 
     function updateUserSetting($userID, $name, $attr, $value){

@@ -7,12 +7,12 @@ class Mdl_User extends MY_Model
     {
         parent::__construct();
         $this->table = 'users';
-        $this->keyAttr = 'user_id';
+        $this->keyAttr = 'id';
     }
 
     public function getByIDWithRole($userID){
         $this->db->select('epanel_roles.*,epanel_roles.name AS role_name,
-            users.user_id,users.name,users.email,users.pic,users.phone,users.gender,users.username,users.epanel');
+            users.id,users.name,users.email,users.pic,users.phone,users.gender,users.username,users.epanel');
         $this->db->where( $this->keyAttr, $userID);
         $this->db->join('epanel_roles', 'role_id = epanel', 'left');
         $query = $this->db->get($this->table);
@@ -78,7 +78,7 @@ class Mdl_User extends MY_Model
 
     public function getUserName($userID){
         $this->db->select('username');
-        $this->db->where('user_id', $userID);
+        $this->db->where($this->keyAttr, $userID);
         $query = $this->db->get($this->table);
         $result = $query->row_array();
         return $result['username'] ?? '';

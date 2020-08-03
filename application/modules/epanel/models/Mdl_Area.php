@@ -6,7 +6,7 @@ class Mdl_Area extends MY_Model
     function __construct()
     {
         $this->table = 'epanel_areas';
-        $this->keyAttr = 'area_id';
+        $this->keyAttr = 'id';
     }
 
     function getRoleAreas($roleID){

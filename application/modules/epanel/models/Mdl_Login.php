@@ -6,7 +6,7 @@ class Mdl_Login extends MY_Model
     function __construct()
     {
         $this->table = 'epanel_logins';
-        $this->keyAttr = 'login_id';
+        $this->keyAttr = 'id';
     }
     /**
      * get the last login try for this username or ip address

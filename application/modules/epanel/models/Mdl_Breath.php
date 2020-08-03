@@ -6,7 +6,7 @@ class Mdl_Breath extends MY_Model
     function __construct()
     {
         $this->table = 'epanel_breath';
-        $this->keyAttr = 'breath_id';
+        $this->keyAttr = 'id';
     }
 
     public function isUserBreath($userID, $sessionKey, $minTime, $ipaddress = 0){
@@ -28,7 +28,6 @@ class Mdl_Breath extends MY_Model
         }else{
             return false;
         }
-        return ($query->row_array())? true: false;
     }
 
 }

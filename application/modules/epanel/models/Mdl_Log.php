@@ -6,12 +6,12 @@ class Mdl_Log extends MY_Model
 {
     function __construct() {
         $this->table = 'log';
-        $this->keyAttr = 'log_id';
+        $this->keyAttr = 'id';
     }
 
     function getLatestLogs($limit = 30){
         $this->db->select($this->table.'.*, users.name as username');
-        $this->db->join('users', $this->table.'.user_id = users.user_id', 'left');
+        $this->db->join('users', $this->table.'.user_id = users.id', 'left');
         $this->db->order_by('date', 'DESC');
         $this->db->limit($limit);
         $query = $this->db->get($this->table);
@@ -20,7 +20,7 @@ class Mdl_Log extends MY_Model
 
     function getTableLog($table, $itemID = 0, $limit = 50){
         $this->db->select('log.date, log.text, users.name as username');
-        $this->db->join('users', $this->table.'.user_id = users.user_id', 'left');
+        $this->db->join('users', $this->table.'.user_id = users.id', 'left');
         $this->db->where('link_type', 'table');
         $this->db->where('link', $table);
 

@@ -6,7 +6,7 @@ class Mdl_Setting extends MY_Model
     function __construct()
     {
         $this->table = 'epanel_setting';
-        $this->keyAttr = 'setting_id';
+        $this->keyAttr = 'id';
         $this->enableCash = true;
     }
     /**

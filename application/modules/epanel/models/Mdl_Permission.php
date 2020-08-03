@@ -6,7 +6,7 @@ class Mdl_Permission extends MY_Model
     function __construct()
     {
         $this->table = 'epanel_permissions';
-        $this->keyAttr = 'permission_id';
+        $this->keyAttr = 'id';
     }
 
     function getRolePermissions($roleID){
@@ -31,7 +31,7 @@ class Mdl_Permission extends MY_Model
     }
 
     function IsPermissionInArea($permission, $area){
-        $this->db->where('permission-id', $permission);
+        $this->db->where('permission_id', $permission);
         $this->db->where('area_id', $area);
         $query = $this->db->get('permission_area');
         return ($query->row_array())? true: false;

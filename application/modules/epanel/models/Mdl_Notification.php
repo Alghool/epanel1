@@ -5,7 +5,7 @@ class Mdl_Notification extends MY_Model
 {
     function __construct() {
         $this->table = 'notifications';
-        $this->keyAttr = 'notification_id';
+        $this->keyAttr = 'id';
     }
 
     function getDomainID($domainName){
@@ -20,7 +20,7 @@ class Mdl_Notification extends MY_Model
 
     function getLastNotification($userID, $roleID, $roleType, $since, $limit){
         $this->db->select('notifications.*,users.name as userName');
-        $this->db->join('users', 'users.user_id = notifications.user_id', 'left');
+        $this->db->join('users', 'users.id = notifications.user_id', 'left');
         $this->db->join('notifi_domains', 'notifi_domains.domain_id = notifications.domain', 'left');
         $this->db->join('notifi_register', 'notifi_register.domain = notifi_domains.domain_id', 'left');
 
@@ -50,7 +50,7 @@ class Mdl_Notification extends MY_Model
         $this->db->distinct();
         $this->db->select('users.user_id');
         $this->db->join('users',
-            "(users.user_id = notifi_register.type_id  and notifi_register.type = 'user') or (users.epanel = notifi_register.type_id  and notifi_register.type = 'role')"
+            "(users.id = notifi_register.type_id  and notifi_register.type = 'user') or (users.epanel = notifi_register.type_id  and notifi_register.type = 'role')"
             , 'left');
         $query = $this->db->get('notifi_register');
         $result = $query->result_array();

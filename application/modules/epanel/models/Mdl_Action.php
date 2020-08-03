@@ -6,7 +6,7 @@ class Mdl_Action extends MY_Model
     function __construct()
     {
         $this->table = 'epanel_actions';
-        $this->keyAttr = 'action_id';
+        $this->keyAttr = 'id';
     }
 
     function isActionExist($type, $container, $link){

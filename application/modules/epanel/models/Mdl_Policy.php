@@ -6,7 +6,7 @@ class Mdl_Policy extends MY_Model
     function __construct()
     {
         $this->table = 'epanel_policies';
-        $this->keyAttr = 'policy_id';
+        $this->keyAttr = 'id';
     }
 
     function getPoliciesStructure($roleType, $userID){
