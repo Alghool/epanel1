@@ -73,10 +73,10 @@ class Migration_seed_epanel extends MY_Migration {
             'name' => 'محمود الغول',
             'email' => 'CodeMechanic@netmechanics.net',
             'pic' => 'CM-logo.png',
-            'phone' => '0021100661165',
+            'phone' => '00201100661165',
             'gender' => 'male',
             'username' => 'codemechanic',
-            'password' => '1196aeee63206e3a2d6374d84538acbd90d93b9f',
+            'password' => hash('ripemd160', 'changeMePlease' .$this->config->item('pw-salt')),
             'active' => '1',
             'epanel' => '1',
             'created_by' => '0'
@@ -95,11 +95,11 @@ class Migration_seed_epanel extends MY_Migration {
 
     public function down()
     {
-        $this->db->turncute('epanel_areas');
-        $this->db->turncute('epanel_policies');
-        $this->db->turncute('epanel_roles');
-        $this->db->turncute('epanel_setting');
-        $this->db->turncute('users');
-        $this->db->turncute('user_setting');
+        $this->db->truncate('epanel_areas');
+        $this->db->truncate('epanel_policies');
+        $this->db->truncate('epanel_roles');
+        $this->db->truncate('epanel_setting');
+        $this->db->truncate('users');
+        $this->db->truncate('user_setting');
     }
 }

@@ -11,10 +11,10 @@ class Mdl_User extends MY_Model
     }
 
     public function getByIDWithRole($userID){
-        $this->db->select('epanel_roles.*,epanel_roles.name AS role_name,
-            users.id as user_id,users.name,users.email,users.pic,users.phone,users.gender,users.username,users.epanel');
+        $this->db->select('epanel_roles.*, epanel_roles.id as role, epanel_roles.name AS role_name,
+            users.id as id,users.name,users.email,users.pic,users.phone,users.gender,users.username,users.epanel');
         $this->db->where( $this->table.'.'.$this->keyAttr, $userID);
-        $this->db->join('epanel_roles', 'epanel_roles.id = epanel', 'left');
+        $this->db->join('epanel_roles', 'epanel_roles.id = users.epanel', 'left');
         $query = $this->db->get($this->table);
         return $query->row_array();
     }
@@ -70,7 +70,7 @@ class Mdl_User extends MY_Model
     public function getUsersWithRolesforShow(){
         $this->db->select('users.*,epanel_roles.name as roleName, epanel_roles.type');
         $this->db->where('epanel !=', '1');
-        $this->db->join('epanel_roles', $this->table.'.epanel = epanel_roles.role_id', 'left');
+        $this->db->join('epanel_roles', $this->table.'.epanel = epanel_roles.id', 'left');
 
         $query = $this->db->get($this->table);
         return $query->result_array();

@@ -100,7 +100,6 @@ class User_epanel extends Epanel_Core {
             ];
 
             $userID = $this->Mdl_User->addByData($user);
-            $this->Mdl_User_Setting->createUserSettings($userID);
 
             foreach ($this->input->post('domainsArr') as $domain){
                 $this->notificationengine->registerToDomain('user', $domain, $userID);
@@ -226,8 +225,9 @@ class User_epanel extends Epanel_Core {
 
         }else{// request the form
             $data['title'] = $user['name'];
+            $this->nanaengine->setDebug([$userID,$this->sessionengine->getUserInfo('userID')]);
             $data['needOldPassword'] = ($userID == $this->sessionengine->getUserInfo('userID'));
-            $data['userID'] = $user['user_id'];
+            $data['userID'] = $user['id'];
 
             $this->nanaengine->addToData($data);
             $this->nanaengine->setPage('epanel/panels/changePassword');

@@ -40,7 +40,7 @@
                 {% for domain in domains %}
                     <div class="col-md-6">
                         <div  class="form-control ">
-                            <input type="checkbox"  name="domainsArr[]"  {{ domain.type_id ? 'checked' : '' }} value="{{ domain.domain_id }}" >&nbsp;<lang>b:{{ domain.name }}</lang>
+                            <input type="checkbox"  name="domainsArr[]"  {{ domain.type_id ? 'checked' : '' }} value="{{ domain.id }}" >&nbsp;<lang>b:{{ domain.name }}</lang>
                         </div>
                     </div>
                 {% endfor %}
@@ -50,7 +50,7 @@
 
         <div class="text-center">
             <a  id="submit" class="btn btn-primary accent-3-background-border" hasValidate="1"
-                action="form" link="epanel/Role/{% if edit %}editRole?appliedid={{ role.role_id}}{% else %}addRole{% endif %}" form-id="{{ edit ? 'edit' : 'add' }}-role-form" onResult="destroyAndReloadParent">
+                action="form" link="epanel/Role/{% if edit %}editRole?appliedid={{ role.id}}{% else %}addRole{% endif %}" form-id="{{ edit ? 'edit' : 'add' }}-role-form" onResult="destroyAndReloadParent">
                 <i class="icon-floppy-disk position-right"></i><lang>save</lang>
             </a>
         </div>
@@ -64,7 +64,7 @@
     const permissions = Epanel.getEpanel().rootArea.permissions;
 
 
-      function checkClicked(elem){
+  function checkClicked(elem){
 
         const myID = $(elem).data('id');
         const myValue = $(elem).is(':checked');
@@ -113,17 +113,20 @@
     {% else %}
           var selectedPermission = [];
     {% endif %}
-      permissions.forEach((rootPermission, index)=>{
+    console.log(selectedPermission);
+    permissions.forEach((rootPermission, index)=>{
         var isChecked = (selectedPermission.includes(rootPermission.id)) ? " checked " : "";
         $('#permission-select-holder').append($('<div class="col-md-12">'
           +'<div  class="form-control sublight-background root-permission-select">'
           +'<input type="checkbox" class="permission-check root-permission-check" onclick="checkClicked(this)"  data-id="'+rootPermission.id+'" id="permission-selector-'+rootPermission.id+'" name="permissionArr[]" value="'+rootPermission.id+'" '
           + isChecked +' >&nbsp; '+ rootPermission.title +'&nbsp;'
           +'</div></div>'));
-        getChilrenPermission(rootPermission);
+        if(!!rootPermission.children) {
+          getChildrenPermission(rootPermission);
+        }
       });
 
-      function getChilrenPermission(parent){
+      function getChildrenPermission(parent){
         const lvl = parent.lvl + 1;
         const widthClass = lvl < 2 ? '12': '6';
         const colorClass = lvl < 2 ? '': 'light-background';
@@ -135,7 +138,7 @@
             + isChecked + ' >&nbsp; '+ permission.title +'&nbsp;'
             +'</div></div>'));
             if(!!permission.children){
-              getChilrenPermission(permission);
+              getChildrenPermission(permission);
             }
         })
       }

@@ -10,17 +10,24 @@ class Mdl_User_Setting extends MY_Model
     }
 
     function updateUserSetting($userID, $name, $attr, $value){
-        $this->db->where('user_id', $userID);
-        $this->db->where('name', $name);
-        $this->db->set($attr, $value);
-        $this->db->update($this->table);
+        $oldValue = $this->getUserSetting($userID);
+        if($oldValue[$name] != $value){
+            $this->db->where('user_id', $userID);
+            $this->db->where('name', $name);
+            $this->db->delete($this->table);
+            $this->addByData(['user_id' => $userID, 'name' => $name, $attr => $value]);
+        }
     }
 
     function getUserSetting($userID){
+        $result = [];
+        //get default first
+        if($userID != 1){
+            $result = $this->getUserSetting(1);
+        }
 
         $this->db->where('user_id', $userID);
          $query = $this->db->get($this->table);
-         $result = array();
          $settings = $query->result_array();
         foreach ($settings as $row)
         {

@@ -77,7 +77,7 @@ class Epanel_Core extends MX_Controller{
                 case 7:
                 case 10:
                     $user['epanel'] = $this->getEpanelAreasAndPermissions();
-                    $user['epanel']['policies'] = $this->Mdl_Policy->getPoliciesStructure($user['type'],$user['user_id']);
+                    $user['epanel']['policies'] = $this->Mdl_Policy->getPoliciesStructure($user['type'],$user['id']);
                     break;
                 case 0:
                     $this->nanaengine->addMsg( 'error', 'userpanned');
@@ -89,7 +89,7 @@ class Epanel_Core extends MX_Controller{
                     break;
                 default:
                     $user['epanel'] = $this->getEpanelAreasAndPermissions($user['id'], $user['type']);
-                    $user['epanel']['policies'] = $this->Mdl_Policy->getPoliciesStructure($user['type'],$user['user_id']);
+                    $user['epanel']['policies'] = $this->Mdl_Policy->getPoliciesStructure($user['type'],$user['id']);
                     break;
             }
         }else{
@@ -190,12 +190,12 @@ class Epanel_Core extends MX_Controller{
         $this->load->model('Mdl_Setting');
         $sessionKey =  hash('ripemd160',$this->input->ip_address() .$this->config->item('ip-salt'));
         $userInfo = array(
-            'userID'  => $userData['user_id'],
+            'userID'  => $userData['id'],
             'name'  => $userData['name'],
             'username'  => $userData['username'],
             'pic' => $userData['pic'],
             'lang' => (isset($userData['setting']['language']))? $userData['setting']['language']:$this->Mdl_Setting->getSettingStrValue('defaultLanguage') ,
-            'role' => $userData['id'],
+            'role' => $userData['role'],
             'roleType' => $userData['type']
         );
         $sessionData =[
@@ -281,7 +281,7 @@ class Epanel_Core extends MX_Controller{
             } else {
                 $user = $this->Mdl_User->getByIDWithRole($appliedID);
                 $appliedUser = [
-                    'userID' => $user['user_id'],
+                    'userID' => $user['id'],
                     'roleType' => $user['type']
                 ];
             }
@@ -354,6 +354,7 @@ class Epanel_Core extends MX_Controller{
     protected function isLogin($userID = 0)
     {
         $session = $this->sessionengine->getSessionKey();
+
         if($session){
             if($userID){
                 if($userID != $this->sessionengine->getUserInfo('userID')) return false;

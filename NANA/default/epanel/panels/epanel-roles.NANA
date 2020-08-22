@@ -50,7 +50,7 @@
                                     <div class="checkbox checkbox-switchery">
                                         <label class="checkbox-inline checkbox-switchery switchery-xs">
                                             <input type="checkbox" class="switchery switchery-green"
-                                                   action ="action" link="epanel/role/switchRole?role={{ role.role_id }}"
+                                                   action ="action" link="epanel/role/switchRole?role={{ role.id }}"
                                                     {% if(role.active)%} checked="checked" {% endif %}>
                                         </label>
                                     </div>
@@ -73,7 +73,7 @@
                                 {% if policies.edit and role.core == '0' %}
                                     <li class="text-primary-600">
                                     <a  panel-id="editRole" title="edit" localize-title
-                                    action="panel" link= "epanel/Role/editRole?appliedid={{ role.role_id }}">
+                                    action="panel" link= "epanel/Role/editRole?appliedid={{ role.id }}">
                                     <i class="icon-pencil7"></i>
                                     </a>
                                     </li>
@@ -81,7 +81,7 @@
                                 {% if policies.default and role.default == '0' %}
                                     <li class="text-green-700">
                                     <a title="setDefault" localize-title
-                                    action="action" link="epanel/Role/defaultRole?role={{ role.role_id }}" onResult = "reloadme">
+                                    action="action" link="epanel/Role/defaultRole?role={{ role.id }}" onResult = "reloadme">
                                     <i class="icon-toggle"></i>
                                     </a>
                                     </li>
@@ -89,7 +89,7 @@
                                 {% if policies.delete and role.core == '0' and role.default == '0' %}
                                     <li class="text-danger-600">
                                         <a actionConfirm="confirmRoleDelete" title="delete" localize-title
-                                           action="action" link="epanel/Role/deleteRole?role={{ role.role_id }}" onResult="reloadme">
+                                           action="action" link="epanel/Role/deleteRole?role={{ role.id }}" onResult="reloadme">
                                             <i class="icon-trash"></i>
                                         </a>
                                     </li>

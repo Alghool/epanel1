@@ -160,9 +160,10 @@ class Epanel extends Epanel_Core {
 
         $this->Mdl_Login->deleteLogin($userName, $ipAddress);
         $userData = $this->getUserEnvironment($userID);
+
         if(is_array($userData)){
             if($this->createNewSession($userData) && $userData['epanel']){
-                $userAuthorization = $this->getUserAuthorization($userData['user_id']);
+                $userAuthorization = $this->getUserAuthorization($userData['id']);
                 $this->sessionengine->setValue('userAuthorization', $userAuthorization);
                 if($this->createNewBreath($userID, $ipAddress)){
                     return $userData;

@@ -1,7 +1,7 @@
 class User {
 
   constructor(_url, _userInfo) {
-    this.id = _userInfo.user_id,
+    this.id = _userInfo.id,
     this.name = _userInfo.name;
     this.username = _userInfo.username;
     this.email = _userInfo.email;

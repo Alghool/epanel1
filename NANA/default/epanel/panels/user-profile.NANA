@@ -44,7 +44,7 @@
                 {% if user.editProfile == 'true' %}
                     <li >
                         <div class="icon-button" onclick="confirmAction(this)" panel="edit-user" title="edit"
-                             action = "users/User_epanel/updateUser?appliedid={{ user.id }}" reload = "false">
+                             action = "users/User_epanel/updateUser?appliedid={{ id }}" reload = "false">
                             <i class="fa fa-edit fa-2x"></i>
                             <p>تغير البيانات</p>
                         </div>
@@ -53,7 +53,7 @@
                 {% if canChangePassword %}
                     <li>
                         <div class="icon-button" title="changePassword" panel-id="changePassword"
-                             action="panel" link= "users/user_epanel/changePassword?appliedid={{ user_id }}" localize-title>
+                             action="panel" link= "users/user_epanel/changePassword?appliedid={{ id }}" localize-title>
                             <i class="fa fa-user-plus fa-2x"></i>
                             <p localize>changePassword</p>
                         </div>

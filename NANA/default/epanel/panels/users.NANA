@@ -20,7 +20,7 @@
                         <td >
                             {% if policies.show %}
                                 <a actiontitle="view-user" title="viewUser" panel-id="getUserProfile"
-                                   action ="panel" link="users/User_epanel/getUserProfile?appliedid={{ user.user_id }}" >
+                                   action ="panel" link="users/User_epanel/getUserProfile?appliedid={{ user.id }}" >
                                     {{ user.username }}
                                 </a>
                             {% else %}
@@ -55,7 +55,7 @@
                                 <div class="checkbox checkbox-switchery">
                                     <label class="checkbox-inline checkbox-switchery switchery-xs">
                                         <input type="checkbox" class="switchery switchery-green"
-                                               action="action" link="users/User_epanel/switchUser?appliedid={{ user.user_id }}"
+                                               action="action" link="users/User_epanel/switchUser?appliedid={{ user.id }}"
                                                 {% if(user.active)%} checked="checked" {% endif %}>
                                     </label>
                                 </div>
@@ -66,7 +66,7 @@
                                 {% if policies.edit%}
                                     <li class="text-primary-600">
                                         <a  panel-id="editUser" title="edit" localize-title
-                                           action="panel" link= "users/User_epanel/updateUser?appliedid={{ user.user_id }}" >
+                                           action="panel" link= "users/User_epanel/updateUser?appliedid={{ user.id }}" >
                                             <i class="icon-pencil7"></i>
                                         </a>
                                     </li>
@@ -74,7 +74,7 @@
                                 {% if policies.password%}
                                     <li class="text-brown-700">
                                         <a  title="changePassword"  panel-id="changePassword"
-                                           action="panel" link= "users/User_epanel/changePassword?appliedid={{ user.user_id }}">
+                                           action="panel" link= "users/User_epanel/changePassword?appliedid={{ user.id }}">
                                             <i class="icon-lock"></i>
                                         </a>
                                     </li>
@@ -82,7 +82,7 @@
                                 {% if policies.delete %}
                                     <li class="text-danger-600">
                                         <a actionConfirm="confirmUserDelete" title="delete" localize-title
-                                           action="action" link="users/User_epanel/deleteUser?appliedid={{ user.user_id }}" onResult="reloadme">
+                                           action="action" link="users/User_epanel/deleteUser?appliedid={{ user.id }}" onResult="reloadme">
                                             <i class="icon-trash"></i>
                                         </a>
                                     </li>

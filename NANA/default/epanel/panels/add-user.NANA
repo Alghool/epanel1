@@ -79,7 +79,7 @@
                 {% for domain in domains %}
                     <div class="col-md-6">
                         <div  class="form-control ">
-                            <input type="checkbox"  name="domainsArr[]" value="{{ domain.domain_id }}"
+                            <input type="checkbox"  name="domainsArr[]" value="{{ domain.id }}"
                             {{ domain.type_id ? 'checked' : '' }}
                             >&nbsp; <lang>b:{{ domain.name }}</lang> &nbsp;
                         </div>
@@ -110,7 +110,7 @@
 
         <div class="text-center">
             <a  id="submit" class="btn btn-primary accent-3-background-border" hasValidate="1"
-                action="form" link="users/user_epanel/{% if edit %}updateUser?appliedid={{ user.user_id}}{% else %}addUser{% endif %}" form-id="{{ edit ? 'edit' : 'add' }}-user-form" onResult="destroyAndReloadParent">
+                action="form" link="users/user_epanel/{% if edit %}updateUser?appliedid={{ user.id}}{% else %}addUser{% endif %}" form-id="{{ edit ? 'edit' : 'add' }}-user-form" onResult="destroyAndReloadParent">
                 <i class="icon-floppy-disk position-right"></i><lang>save</lang>
             </a>
         </div>

@@ -72,7 +72,7 @@ class Mdl_Notification extends MY_Model
     }
 
     function getActiveDomainsWithUser($userID){
-        $this->db->select('notifi_domains.*, notifi_register.*');
+        $this->db->select('notifi_register.*, notifi_domains.*');
         $this->db->join('notifi_register', "notifi_register.domain = notifi_domains.id and type = 'user' and type_id = '{$userID}'" , 'left');
         $this->db->where('active', 1);
         $query = $this->db->get('notifi_domains');
@@ -80,7 +80,7 @@ class Mdl_Notification extends MY_Model
     }
 
     function getActiveDomainsWithRole($roleID){
-        $this->db->select('notifi_domains.*, notifi_register.*');
+        $this->db->select('notifi_register.*, notifi_domains.*');
         $this->db->join('notifi_register', "notifi_register.domain = notifi_domains.id and type = 'role' and type_id = '{$roleID}'" , 'left');
         $this->db->where('active', 1);
         $query = $this->db->get('notifi_domains');

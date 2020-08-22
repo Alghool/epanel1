@@ -17,7 +17,7 @@ class Mdl_Role extends MY_Model
 
     function getRoleListForUser($userRole){
         //todo: set this as policy
-        $this->db->select($this->table.'.*, (select count(id) from users WHERE users.epanel = '.$this->table.$this->keyAttr.') as users ');
+        $this->db->select($this->table.'.*, (select count(id) from users WHERE users.epanel = '.$this->table.'.'.$this->keyAttr.') as users ');
         $this->db->where('type <= ', $userRole);
         $this->db->where('type != ', '10');
         $query = $this->db->get($this->table);

@@ -1,7 +1,7 @@
 class Permission{
 
   constructor(_title, _permission, _parent, _children,  _area = null){
-    this.id = _permission.permission_id;
+    this.id = _permission.id;
     this.name = _permission.name;
     this.display = _permission.display;
     this.order = _permission.sort

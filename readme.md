@@ -19,7 +19,21 @@ support php 5.6 to 7.3
     <li>user profiling</li>
     <li>supporting multi modules</li>
     <li>example posts module</li>
-</ul
+</ul>
+
+<h5>installation guide</h5>
+
+<ul>
+    <li>change base_url in "application/config/config.php"</li>
+    <li>change epanel-link in "application/config/epanel_config.php"</li>
+    <li>change password and ip salt in "application/config/epanel_config.php"</li>
+    <li>change codemechanics user data in "application/migrations/002_seed_epanel.php"</li>
+    <li>change users in "application/migrations/003_users_domain.php" Or remove file if not needed</li>
+    <li>review Or remove (if not needed) migration files number 3 and 4 at "application/migrations/" if migrations removed be sure to update migration_version in "application/config/migration.php" </li>
+    <li>configer database parameters in "application/config/database.php"</li>
+    
+
+</ul>
 
 <br/>
 <h5>credit to</h5>

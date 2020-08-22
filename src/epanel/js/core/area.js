@@ -1,7 +1,7 @@
 class Area{
 
   constructor(_title, _area, _parent, _children,  _permissions = null){
-    this.id = _area.area_id;
+    this.id = _area.id;
     this.name = _area.name;
     this.display = _area.display;
     this.lvl = _area.lvl;
